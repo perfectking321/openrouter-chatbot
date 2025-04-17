@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemma 3 Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Round chat history button -->
+        <div class="history-button" id="history-button">
+            <i class="fas fa-history"></i>
+            <span>Chat History</span>
+        </div>
+        
+        <!-- History panel (initially hidden) -->
+        <div class="history-panel" id="history-panel">
+            <div class="history-header">
+                <h3>Chat History</h3>
+                <button id="clear-history">Clear</button>
+                <button id="close-history"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="history-list" id="history-list">
+                <!-- History items will be added here dynamically -->
+            </div>
+        </div>
+        
+        <!-- Main chat area -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <h2>Gemma 3 Chatbot</h2>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Welcome message -->
+                <div class="message bot-message">
+                    <div class="message-content">
+                        Hello! I'm your Gemma 3 AI assistant. How can I help you today?
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat input area -->
+            <div class="chat-input-container">
+                <textarea id="user-input" placeholder="Type your message here..." rows="1"></textarea>
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
