@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 import requests
 import os
 from dotenv import load_dotenv
@@ -18,6 +18,11 @@ conversation_history = []
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/Flowcharts/<path:filename>')
+def serve_flowcharts(filename):
+    flowcharts_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Flowcharts')
+    return send_from_directory(flowcharts_dir, filename)
 
 @app.route('/chat', methods=['POST'])
 def chat():

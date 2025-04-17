@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const historyPanel = document.getElementById('history-panel');
     const closeHistoryButton = document.getElementById('close-history');
     const mainChat = document.querySelector('.main-chat');
+    const flowchartButton = document.getElementById('flowchart-button');
     
     // Toggle history panel and fade out the history button
     historyButton.addEventListener('click', function() {
@@ -29,6 +30,20 @@ document.addEventListener('DOMContentLoaded', function() {
         historyButton.classList.remove('fade-out');
     });
 
+    // Add flowchart button click handler
+    flowchartButton.addEventListener('click', function() {
+        // Store current chat history in localStorage before redirecting
+        const chatHistory = {
+            messages: Array.from(chatMessages.children).map(msg => ({
+                type: msg.classList.contains('user-message') ? 'user' : 'bot',
+                content: msg.querySelector('.message-content').textContent
+            }))
+        };
+        localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+        
+        // Redirect to flowchart page
+        window.location.href = '/Flowcharts/index.html';
+    });
     
     // Auto-resize the textarea as the user types
     userInput.addEventListener('input', function() {
